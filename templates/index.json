@@ -9,7 +9,8 @@
     "reviews":            { "type": "reviews",             "settings": {} },
     "stats":              { "type": "stats",               "settings": {} },
     "bundles":            { "type": "bundles",             "settings": {} },
-    "faq":                { "type": "faq",                 "settings": {} }
+    "faq":                { "type": "faq",                 "settings": {} },
+    "final-cta":          { "type": "final-cta",           "settings": {} }
   },
   "order": [
     "hero",
@@ -21,6 +22,7 @@
     "reviews",
     "stats",
     "bundles",
-    "faq"
+    "faq",
+    "final-cta"
   ]
 }

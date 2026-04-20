@@ -2,30 +2,41 @@
   <div class="container">
     <div class="aerys-medical__inner">
 
+      <!-- Video col -->
       <div>
         <div class="aerys-medical__video">
           <img
             src="https://static.wixstatic.com/media/bba426_9447cd68d99d45829e71e80fd75a1565~mv2.png"
-            alt="Dr. Verified — Medical Professional endorsing AERYS™"
-            class="aerys-medical__video-thumb lazy"
+            alt="Dr. Geoffrey Tomlin, DO, FACS endorsing AERYS™ Clinical Sleep Strips"
+            class="aerys-medical__video-thumb"
             width="600" height="375"
             fetchpriority="high"
           >
-          <div class="aerys-medical__play" onclick="aerysPlayMedicalVideo()" role="button" tabindex="0" aria-label="Play medical validation video">
+          <button class="aerys-medical__play" id="aerysMedVideoBtn" aria-label="Play medical validation video">
             <div class="aerys-medical__play-btn">
               <svg class="aerys-medical__play-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
             </div>
-          </div>
+          </button>
+          <!-- Bottom-left: Dr. badge -->
           <div class="aerys-medical__dr-badge">
-            <div class="aerys-medical__dr-icon" aria-hidden="true">👤</div>
+            <div class="aerys-medical__dr-icon" aria-hidden="true">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            </div>
             <div>
               <div class="aerys-medical__dr-name">Dr. Verified</div>
               <div class="aerys-medical__dr-title">Medical Professional</div>
             </div>
           </div>
+          <!-- Bottom-right: attribution -->
+          <div class="aerys-medical__dr-credit" aria-hidden="true">
+            <div class="aerys-medical__dr-credit-name">Dr. Geoffrey Tomlin, DO, FACS</div>
+            <div class="aerys-medical__dr-credit-spec">Otolaryngology &middot; H&amp;N Surgery</div>
+            <div class="aerys-medical__dr-credit-spec">Facial Plastic Surgery</div>
+          </div>
         </div>
       </div>
 
+      <!-- Copy col -->
       <div>
         <span class="sec-label">Medical Validation</span>
         <h2 id="medical-title" class="aerys-medical__headline">
@@ -33,21 +44,41 @@
           <span class="hi">medical professionals.</span>
         </h2>
         <blockquote class="aerys-medical__quote">
-          "Mouth breathing during sleep is one of the most underestimated contributors to poor recovery and facial structure changes. A simple nasal strip habit can make a measurable difference — and the quality of the adhesive matters enormously for patient compliance."
+          &#8220;Mouth breathing during sleep is one of the most underestimated contributors to poor recovery and facial structure changes. A simple nasal strip habit can make a measurable difference &mdash; and the quality of the adhesive matters enormously for patient compliance.&#8221;
         </blockquote>
+
         <div class="aerys-medical__bullets">
+
           <div class="aerys-medical__bullet">
-            <div class="aerys-medical__bullet-icon" aria-hidden="true">👤</div>
-            <span><strong>Endorsed for nightly use</strong> — Safe for long-term, continuous application</span>
+            <div class="aerys-medical__bullet-icon" aria-hidden="true">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            </div>
+            <div>
+              <div class="aerys-medical__bullet-title">Endorsed for nightly use</div>
+              <div class="aerys-medical__bullet-sub">Safe for long-term, continuous application</div>
+            </div>
           </div>
+
           <div class="aerys-medical__bullet">
-            <div class="aerys-medical__bullet-icon" aria-hidden="true">🏥</div>
-            <span><strong>Medical-grade adhesive standard</strong> — Same class used in clinical wound dressings</span>
+            <div class="aerys-medical__bullet-icon" aria-hidden="true">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <div>
+              <div class="aerys-medical__bullet-title">Medical-grade adhesive standard</div>
+              <div class="aerys-medical__bullet-sub">Same class used in clinical wound dressings</div>
+            </div>
           </div>
+
           <div class="aerys-medical__bullet">
-            <div class="aerys-medical__bullet-icon" aria-hidden="true">💳</div>
-            <span><strong>HSA / FSA Eligible</strong> — Qualifies as a medical wellness expense</span>
+            <div class="aerys-medical__bullet-icon" aria-hidden="true">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/></svg>
+            </div>
+            <div>
+              <div class="aerys-medical__bullet-title">HSA / FSA Eligible</div>
+              <div class="aerys-medical__bullet-sub">Qualifies as a medical wellness expense</div>
+            </div>
           </div>
+
         </div>
         <a href="#bundles" class="btn btn-dark">GET MY 30-NIGHT TRIAL &rarr;</a>
       </div>

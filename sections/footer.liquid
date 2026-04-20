@@ -1,39 +1,57 @@
 <footer class="aerys-footer" role="contentinfo">
   <div class="container">
+
     <div class="aerys-footer__inner">
+
+      <!-- Brand col -->
       <div>
-        <div class="aerys-footer__logo">AERYS™</div>
+        <div class="aerys-footer__logo">AERYS&#8482;</div>
         <p class="aerys-footer__tagline">Science-backed transdermal patches for oxygen optimization and deep sleep. Manufactured in the USA in an FDA-registered, cGMP-certified facility.</p>
         <div class="aerys-footer__socials">
-          <a href="#">Instagram</a>
-          <a href="#">Twitter</a>
-          <a href="#">YouTube</a>
+          <a href="#" aria-label="Instagram">Instagram</a>
+          <a href="#" aria-label="Twitter">Twitter</a>
+          <a href="#" aria-label="YouTube">YouTube</a>
         </div>
       </div>
+
+      <!-- Products col -->
       <div>
         <p class="aerys-footer__col-title">Products</p>
         <ul class="aerys-footer__links">
-          <li><a href="#bundles">30-Night Starter</a></li>
-          <li><a href="#bundles">90-Night Protocol</a></li>
-          <li><a href="#bundles">180-Night Regimen</a></li>
+          <li><a href="#bundles">OxyPatch</a></li>
+          <li><a href="#bundles">SleepPatch</a></li>
+          <li><a href="#bundles">Full Stack Bundle</a></li>
+          <li><a href="#bundles">Subscriptions</a></li>
+          <li><a href="#bundles">Wholesale</a></li>
         </ul>
       </div>
+
+      <!-- Company col -->
       <div>
         <p class="aerys-footer__col-title">Company</p>
         <ul class="aerys-footer__links">
-          <li><a href="/pages/faq">FAQ</a></li>
-          <li><a href="/policies/refund-policy">30-Night Guarantee</a></li>
-          <li><a href="/policies/shipping-policy">Shipping</a></li>
+          <li><a href="/pages/about">About AERYS</a></li>
+          <li><a href="/pages/research">Research</a></li>
+          <li><a href="/pages/careers">Careers</a></li>
+          <li><a href="/pages/press">Press</a></li>
           <li><a href="/pages/contact">Contact</a></li>
-          <li><a href="{{ shop.privacy_policy.url }}">Privacy Policy</a></li>
-          <li><a href="{{ shop.terms_of_service.url }}">Terms of Use</a></li>
         </ul>
       </div>
-    </div>
+
+    </div><!-- /.aerys-footer__inner -->
+
     <div class="aerys-footer__bottom">
-      <p class="aerys-footer__copyright">© {{ 'now' | date: '%Y' }} AERYS Inc. All rights reserved.</p>
-      <p class="aerys-footer__disclaimer">* These statements have not been evaluated by the Food and Drug Administration. AERYS™ products are not intended to diagnose, treat, cure, or prevent any disease. Individual results may vary. Clinical trial data is from third-party studies and may not reflect typical consumer results.</p>
+      <div class="aerys-footer__bottom-bar">
+        <p class="aerys-footer__copyright">&copy; {{ 'now' | date: '%Y' }} AERYS Inc. All rights reserved.</p>
+        <div class="aerys-footer__legal-links">
+          <a href="{{ shop.privacy_policy.url }}">Privacy Policy</a>
+          <a href="{{ shop.terms_of_service.url }}">Terms of Use</a>
+          <a href="/pages/cookie-settings">Cookie Settings</a>
+        </div>
+      </div>
+      <p class="aerys-footer__disclaimer">* These statements have not been evaluated by the Food and Drug Administration. AERYS&#8482; products are not intended to diagnose, treat, cure, or prevent any disease. Individual results may vary. Clinical trial data is from third-party studies and may not reflect typical consumer results.</p>
     </div>
+
   </div>
 </footer>
 
