@@ -1,0 +1,20 @@
+<div class="aerys-overlay" id="aerysOverlay" role="presentation" aria-hidden="true"></div>
+<aside class="aerys-cart" id="aerysCart" role="dialog" aria-modal="true" aria-label="Shopping cart">
+  <div class="aerys-cart__header">
+    <h2>Your Order</h2>
+    <button class="aerys-cart__close" id="aerysCartClose" aria-label="Close cart">✕</button>
+  </div>
+  <div class="aerys-cart__items" id="aerysCartItems" role="list">
+    <div class="aerys-cart__empty" id="aerysCartEmpty">Your cart is empty.</div>
+  </div>
+  <div class="aerys-cart__footer" id="aerysCartFooter" style="display:none">
+    <div class="aerys-cart__total">
+      <span>Total</span>
+      <span id="aerysCartTotal">$0.00</span>
+    </div>
+    <button class="aerys-cart__checkout" id="aerysCheckoutBtn">Proceed to Checkout</button>
+  </div>
+</aside>
+{% schema %}
+{ "name": "Cart Drawer", "settings": [] }
+{% endschema %}

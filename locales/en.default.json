@@ -1,0 +1,30 @@
+{
+  "general": {
+    "currency": {
+      "format": "${{amount}}"
+    }
+  },
+  "products": {
+    "product": {
+      "add_to_cart": "Add to Cart",
+      "sold_out": "Sold Out",
+      "unavailable": "Unavailable"
+    }
+  },
+  "cart": {
+    "general": {
+      "title": "Your Order",
+      "empty": "Your cart is empty.",
+      "checkout": "Proceed to Checkout",
+      "total": "Total"
+    }
+  },
+  "sections": {
+    "header": {
+      "title": "AERYS™"
+    },
+    "footer": {
+      "copyright": "© 2026 AERYS™. All rights reserved."
+    }
+  }
+}

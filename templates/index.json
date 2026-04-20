@@ -1,0 +1,26 @@
+{
+  "sections": {
+    "hero":               { "type": "hero",                "settings": {} },
+    "trust-bar":          { "type": "trust-bar",           "settings": {} },
+    "medical-validation": { "type": "medical-validation",  "settings": {} },
+    "why-fail":           { "type": "why-fail",            "settings": {} },
+    "differentiators":    { "type": "differentiators",     "settings": {} },
+    "social-proof":       { "type": "social-proof",        "settings": {} },
+    "reviews":            { "type": "reviews",             "settings": {} },
+    "stats":              { "type": "stats",               "settings": {} },
+    "bundles":            { "type": "bundles",             "settings": {} },
+    "faq":                { "type": "faq",                 "settings": {} }
+  },
+  "order": [
+    "hero",
+    "trust-bar",
+    "medical-validation",
+    "why-fail",
+    "differentiators",
+    "social-proof",
+    "reviews",
+    "stats",
+    "bundles",
+    "faq"
+  ]
+}

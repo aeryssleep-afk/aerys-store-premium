@@ -1,0 +1,21 @@
+<header class="aerys-header" role="banner">
+  <div class="container">
+    <div class="aerys-header__inner">
+      <a href="{{ routes.root_url }}" class="aerys-header__logo" aria-label="{{ shop.name }}">AERYS™</a>
+      <nav class="aerys-header__nav" aria-label="Main navigation">
+        <a href="#bundles">Shop</a>
+        <a href="#proof">Reviews</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+      <div class="aerys-header__right">
+        <button class="aerys-cart-btn" id="aerysCartBtn" aria-label="Open cart">
+          Cart <span class="aerys-cart-count" id="aerysCartCount" aria-live="polite">0</span>
+        </button>
+        <a href="#bundles" class="aerys-header__cta">Start Tonight</a>
+      </div>
+    </div>
+  </div>
+</header>
+{% schema %}
+{ "name": "Header", "settings": [] }
+{% endschema %}

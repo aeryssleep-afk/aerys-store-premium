@@ -1,0 +1,42 @@
+<footer class="aerys-footer" role="contentinfo">
+  <div class="container">
+    <div class="aerys-footer__inner">
+      <div>
+        <div class="aerys-footer__logo">AERYS™</div>
+        <p class="aerys-footer__tagline">Science-backed transdermal patches for oxygen optimization and deep sleep. Manufactured in the USA in an FDA-registered, cGMP-certified facility.</p>
+        <div class="aerys-footer__socials">
+          <a href="#">Instagram</a>
+          <a href="#">Twitter</a>
+          <a href="#">YouTube</a>
+        </div>
+      </div>
+      <div>
+        <p class="aerys-footer__col-title">Products</p>
+        <ul class="aerys-footer__links">
+          <li><a href="#bundles">30-Night Starter</a></li>
+          <li><a href="#bundles">90-Night Protocol</a></li>
+          <li><a href="#bundles">180-Night Regimen</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="aerys-footer__col-title">Company</p>
+        <ul class="aerys-footer__links">
+          <li><a href="/pages/faq">FAQ</a></li>
+          <li><a href="/policies/refund-policy">30-Night Guarantee</a></li>
+          <li><a href="/policies/shipping-policy">Shipping</a></li>
+          <li><a href="/pages/contact">Contact</a></li>
+          <li><a href="{{ shop.privacy_policy.url }}">Privacy Policy</a></li>
+          <li><a href="{{ shop.terms_of_service.url }}">Terms of Use</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="aerys-footer__bottom">
+      <p class="aerys-footer__copyright">© {{ 'now' | date: '%Y' }} AERYS Inc. All rights reserved.</p>
+      <p class="aerys-footer__disclaimer">* These statements have not been evaluated by the Food and Drug Administration. AERYS™ products are not intended to diagnose, treat, cure, or prevent any disease. Individual results may vary. Clinical trial data is from third-party studies and may not reflect typical consumer results.</p>
+    </div>
+  </div>
+</footer>
+
+{% schema %}
+{ "name": "Footer", "settings": [] }
+{% endschema %}
