@@ -29,12 +29,14 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
   --verified:#10B981;
   --danger:#EF4444;
   --gold:#F59E0B;
-  --section-gap:8rem;
+  --section-gap:clamp(5rem,10vw,10rem);
   --card-pad:2rem;
   --radius-xl:24px;
   --radius-lg:20px;
   --radius-md:14px;
   --radius-sm:10px;
+  --shadow-card:0 1px 3px rgba(0,0,0,.05),0 8px 24px rgba(0,0,0,.06);
+  --shadow-card-hover:0 4px 12px rgba(0,0,0,.06),0 20px 48px rgba(0,0,0,.1);
 }
 
 /* ── LAYOUT ──────────────────────────────────────────── */
@@ -137,9 +139,9 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
   text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:2rem;
 }
 .aerys-hero__headline{
-  font-size:clamp(2.5rem,6vw,4.75rem);font-weight:900;line-height:1.06;
-  color:#fff;letter-spacing:-.03em;margin-bottom:1.75rem;
-  text-shadow:0 4px 48px rgba(0,0,0,.5);max-width:840px;
+  font-size:clamp(2.75rem,7vw,5.5rem);font-weight:900;line-height:1.04;
+  color:#fff;letter-spacing:-.035em;margin-bottom:1.75rem;
+  text-shadow:0 4px 64px rgba(0,0,0,.6);max-width:900px;
 }
 .aerys-hero__sub{
   font-size:clamp(1.0625rem,2vw,1.25rem);line-height:1.6;
@@ -209,9 +211,10 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
 .aerys-problem__card{
   background:#fff;border:1px solid var(--border);
   border-radius:var(--radius-lg);padding:var(--card-pad);
-  transition:box-shadow .2s,transform .22s;
+  box-shadow:var(--shadow-card);
+  transition:box-shadow .25s,transform .25s;
 }
-.aerys-problem__card:hover{box-shadow:0 8px 32px rgba(0,0,0,.07);transform:translateY(-3px)}
+.aerys-problem__card:hover{box-shadow:var(--shadow-card-hover);transform:translateY(-4px)}
 .aerys-problem__card-icon{
   width:48px;height:48px;background:#FEF2F2;border-radius:var(--radius-sm);
   display:flex;align-items:center;justify-content:center;margin-bottom:1.25rem;color:var(--danger);
@@ -269,6 +272,7 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
 .aerys-solution__step{
   background:#fff;border:1px solid var(--border);
   border-radius:var(--radius-lg);padding:var(--card-pad);
+  box-shadow:var(--shadow-card);
 }
 .aerys-solution__step-num{
   font-size:.5625rem;font-weight:700;letter-spacing:.16em;
@@ -753,12 +757,96 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
 @keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
 
 /* ═══════════════════════════════════════════════════════
+   HERO SPLIT LAYOUT + VIDEO
+═══════════════════════════════════════════════════════ */
+.aerys-hero__inner{
+  display:grid;
+  grid-template-columns:1.1fr 0.9fr;
+  gap:5rem;
+  align-items:center;
+  min-height:calc(100svh - 80px);
+}
+.aerys-hero__content{display:flex;flex-direction:column;justify-content:center}
+.aerys-hero__media{
+  position:relative;
+  height:clamp(500px,75vh,720px);
+  border-radius:28px;
+  overflow:hidden;
+  box-shadow:0 40px 100px rgba(0,0,0,.55),0 0 0 1px rgba(255,255,255,.05);
+  background:#0f0f1e;
+  flex-shrink:0;
+}
+.aerys-hero__video{
+  width:100%;height:100%;
+  object-fit:cover;display:block;
+}
+.aerys-hero__media-badge{
+  position:absolute;bottom:1.25rem;left:1.25rem;
+  display:flex;align-items:center;gap:.5rem;
+  background:rgba(10,10,26,.82);backdrop-filter:blur(8px);
+  border-radius:999px;padding:.5rem 1rem;
+  font-size:.8125rem;font-weight:600;color:#fff;
+}
+.aerys-hero__media-badge .stars{font-size:.75rem}
+
+/* ═══════════════════════════════════════════════════════
+   PROBLEM LIFESTYLE IMAGE
+═══════════════════════════════════════════════════════ */
+.aerys-problem__visual{
+  border-radius:var(--radius-lg);overflow:hidden;
+  margin:3.5rem 0 4rem;
+  box-shadow:0 4px 32px rgba(0,0,0,.08);
+}
+.aerys-problem__img{
+  width:100%;display:block;
+  max-height:520px;object-fit:cover;object-position:center 30%;
+}
+
+/* ═══════════════════════════════════════════════════════
+   SOLUTION MECHANISM VIDEO
+═══════════════════════════════════════════════════════ */
+.aerys-solution__video-wrap{
+  border-radius:var(--radius-lg);overflow:hidden;
+  margin:0 0 4rem;
+  background:#000;
+  aspect-ratio:16/9;
+  box-shadow:0 8px 40px rgba(0,0,0,.12);
+}
+.aerys-solution__video{
+  width:100%;height:100%;object-fit:cover;display:block;
+}
+
+/* ═══════════════════════════════════════════════════════
+   PROOF DOCTOR VIDEO
+═══════════════════════════════════════════════════════ */
+.aerys-medical__video video{
+  width:100%;height:100%;object-fit:cover;display:block;
+}
+
+/* ═══════════════════════════════════════════════════════
+   UGC VIDEO CARDS
+═══════════════════════════════════════════════════════ */
+.aerys-vcard__video{
+  width:100%;height:100%;object-fit:cover;display:block;
+}
+
+/* ═══════════════════════════════════════════════════════
+   REVIEW CARD AVATAR PHOTO
+═══════════════════════════════════════════════════════ */
+.aerys-review-card__avatar{overflow:hidden}
+.aerys-review-card__avatar img{
+  width:100%;height:100%;object-fit:cover;border-radius:50%;display:block;
+}
+
+/* ═══════════════════════════════════════════════════════
    RESPONSIVE — TABLET ≤960px
 ═══════════════════════════════════════════════════════ */
 @media(max-width:960px){
   :root{--section-gap:6rem;--card-pad:1.75rem}
   .aerys-header__nav{display:none}
-  .aerys-hero{padding:calc(70px + 4rem) 0 5rem}
+  .aerys-hero{padding:calc(70px + 3rem) 0 4rem}
+  .aerys-hero__inner{grid-template-columns:1fr;gap:2.5rem;min-height:auto}
+  .aerys-hero__media{height:56vw;min-height:320px;border-radius:20px}
   .aerys-medical__inner,.aerys-compare__inner{grid-template-columns:1fr}
   .aerys-features__grid{grid-template-columns:1fr 1fr}
   .aerys-bundles__grid{grid-template-columns:1fr}
@@ -780,9 +868,13 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
 @media(max-width:600px){
   :root{--section-gap:4.5rem;--card-pad:1.5rem;--radius-lg:16px}
   .container{padding:0 1.125rem}
-  .aerys-hero{padding:calc(64px + 3.5rem) 0 4rem}
+  .aerys-hero{padding:calc(64px + 2rem) 0 3.5rem}
+  .aerys-hero__inner{gap:2rem}
+  .aerys-hero__media{height:75vw;min-height:280px;border-radius:16px}
   .aerys-hero__cta-row{flex-direction:column;align-items:stretch}
   .aerys-hero__cta-row .btn,.aerys-hero__cta-row .btn-ghost{justify-content:center;width:100%}
+  .aerys-solution__video-wrap{aspect-ratio:4/3}
+  .aerys-problem__visual{margin:2.5rem 0 3rem}
   .aerys-hero__trust{gap:1.25rem}
   .aerys-solution__chain{grid-template-columns:1fr}
   .aerys-proof__stats{grid-template-columns:1fr}
