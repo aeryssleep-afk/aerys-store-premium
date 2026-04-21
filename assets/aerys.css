@@ -401,6 +401,24 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
   color:var(--verified);background:rgba(16,185,129,.1);
   padding:.25rem .5rem;border-radius:999px;margin-left:.5rem;
 }
+/* ── Image-only carousel card ── */
+.aerys-imgcard{border-radius:var(--radius-md);overflow:hidden;cursor:pointer;display:block}
+.aerys-imgcard__img-wrap{position:relative;aspect-ratio:9/16;overflow:hidden}
+.aerys-imgcard__img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s}
+.aerys-imgcard:hover .aerys-imgcard__img{transform:scale(1.04)}
+.aerys-imgcard__overlay{
+  position:absolute;bottom:0;left:0;right:0;
+  padding:1.5rem 1rem 1.125rem;
+  background:linear-gradient(to top,rgba(9,9,15,.92) 0%,rgba(9,9,15,.6) 55%,transparent 100%);
+}
+.aerys-imgcard__stars{margin-bottom:.375rem}
+.aerys-imgcard__quote{
+  font-size:.8125rem;color:rgba(255,255,255,.9);font-style:italic;
+  font-weight:600;line-height:1.5;margin:0 0 .5rem;
+}
+.aerys-imgcard__author{
+  font-size:.75rem;font-weight:700;color:rgba(255,255,255,.65);letter-spacing:.02em;
+}
 .aerys-carousel__hint{font-size:.8125rem;color:rgba(255,255,255,.28);text-align:center;margin-top:2rem}
 .aerys-carousel__nav{display:flex;align-items:center;justify-content:center;gap:1rem;margin-top:2.25rem}
 .aerys-carousel__btn{
@@ -773,29 +791,13 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
   position:relative;
   flex-shrink:0;
 }
-.aerys-hero__img-stack{
-  position:relative;
-  width:100%;
-}
 .aerys-hero__img-product{
   width:100%;height:auto;display:block;
   border-radius:28px;
   box-shadow:0 40px 80px rgba(0,0,0,.55),0 0 0 1px rgba(255,255,255,.06);
 }
-.aerys-hero__img-lifestyle-wrap{
-  position:absolute;
-  bottom:-1.5rem;
-  right:-1.25rem;
-  width:52%;
-  border-radius:18px;
-  overflow:hidden;
-  box-shadow:0 20px 48px rgba(0,0,0,.45),0 0 0 1px rgba(255,255,255,.07);
-}
-.aerys-hero__img-lifestyle{
-  width:100%;height:auto;display:block;
-}
 .aerys-hero__media-badge{
-  position:absolute;bottom:-1.5rem;left:1rem;
+  position:absolute;bottom:1.25rem;left:1rem;
   display:flex;align-items:center;gap:.5rem;
   background:rgba(10,10,26,.88);backdrop-filter:blur(10px);
   border:1px solid rgba(255,255,255,.08);
@@ -804,9 +806,6 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
   z-index:2;
 }
 .aerys-hero__media-badge .stars{font-size:.75rem}
-
-/* When lifestyle image is behind (mobile): hide it */
-.aerys-hero__img-lifestyle-wrap{background:#0f0f1e}
 
 /* ═══════════════════════════════════════════════════════
    PROBLEM LIFESTYLE IMAGE
@@ -915,8 +914,7 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
   .aerys-footer__bottom-bar{flex-direction:column;align-items:flex-start}
   .aerys-footer__legal-links{flex-wrap:wrap;gap:.875rem}
   .aerys-carousel__slide{flex:0 0 88%}
-  /* hero image stack — single column, no lifestyle overlap on mobile */
-  .aerys-hero__img-lifestyle-wrap{display:none}
+  .aerys-hero__img-product{border-radius:18px}
   .aerys-hero__media-badge{bottom:.875rem;left:.875rem}
 }
 
@@ -1002,9 +1000,7 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
   margin-bottom:.25rem;
 }
 
-/* hero tablet: show landscape image without lifestyle overlay */
 @media(max-width:960px){
   .aerys-hero__media{height:auto;border-radius:0}
   .aerys-hero__img-product{border-radius:20px}
-  .aerys-hero__img-lifestyle-wrap{width:44%;bottom:-1rem;right:-.75rem}
 }
