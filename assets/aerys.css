@@ -757,7 +757,7 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
 @keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
 
 /* ═══════════════════════════════════════════════════════
-   HERO SPLIT LAYOUT + VIDEO
+   HERO SPLIT LAYOUT — IMAGE FIRST
 ═══════════════════════════════════════════════════════ */
 .aerys-hero__inner{
   display:grid;
@@ -767,27 +767,46 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
   min-height:calc(100svh - 80px);
 }
 .aerys-hero__content{display:flex;flex-direction:column;justify-content:center}
+
+/* Image stack: product-main foreground + lifestyle background */
 .aerys-hero__media{
   position:relative;
-  height:clamp(500px,75vh,720px);
-  border-radius:28px;
-  overflow:hidden;
-  box-shadow:0 40px 100px rgba(0,0,0,.55),0 0 0 1px rgba(255,255,255,.05);
-  background:#0f0f1e;
   flex-shrink:0;
 }
-.aerys-hero__video{
-  width:100%;height:100%;
-  object-fit:cover;display:block;
+.aerys-hero__img-stack{
+  position:relative;
+  width:100%;
+}
+.aerys-hero__img-product{
+  width:100%;height:auto;display:block;
+  border-radius:28px;
+  box-shadow:0 40px 80px rgba(0,0,0,.55),0 0 0 1px rgba(255,255,255,.06);
+}
+.aerys-hero__img-lifestyle-wrap{
+  position:absolute;
+  bottom:-1.5rem;
+  right:-1.25rem;
+  width:52%;
+  border-radius:18px;
+  overflow:hidden;
+  box-shadow:0 20px 48px rgba(0,0,0,.45),0 0 0 1px rgba(255,255,255,.07);
+}
+.aerys-hero__img-lifestyle{
+  width:100%;height:auto;display:block;
 }
 .aerys-hero__media-badge{
-  position:absolute;bottom:1.25rem;left:1.25rem;
+  position:absolute;bottom:-1.5rem;left:1rem;
   display:flex;align-items:center;gap:.5rem;
-  background:rgba(10,10,26,.82);backdrop-filter:blur(8px);
-  border-radius:999px;padding:.5rem 1rem;
+  background:rgba(10,10,26,.88);backdrop-filter:blur(10px);
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:999px;padding:.5rem 1.125rem;
   font-size:.8125rem;font-weight:600;color:#fff;
+  z-index:2;
 }
 .aerys-hero__media-badge .stars{font-size:.75rem}
+
+/* When lifestyle image is behind (mobile): hide it */
+.aerys-hero__img-lifestyle-wrap{background:#0f0f1e}
 
 /* ═══════════════════════════════════════════════════════
    PROBLEM LIFESTYLE IMAGE
@@ -896,4 +915,96 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
   .aerys-footer__bottom-bar{flex-direction:column;align-items:flex-start}
   .aerys-footer__legal-links{flex-wrap:wrap;gap:.875rem}
   .aerys-carousel__slide{flex:0 0 88%}
+  /* hero image stack — single column, no lifestyle overlap on mobile */
+  .aerys-hero__img-lifestyle-wrap{display:none}
+  .aerys-hero__media-badge{bottom:.875rem;left:.875rem}
+}
+
+/* ═══════════════════════════════════════════════════════
+   PROBLEM — SYMPTOM CHIPS
+═══════════════════════════════════════════════════════ */
+.aerys-problem__symptoms{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:.875rem;
+  margin-bottom:3rem;
+}
+.aerys-problem__symptom{
+  display:flex;align-items:center;gap:.875rem;
+  background:var(--bg-alt);
+  border:1px solid var(--border);
+  border-radius:var(--radius-md);
+  padding:1rem 1.25rem;
+  font-size:.9375rem;font-weight:600;color:var(--text);
+  line-height:1.35;
+}
+.aerys-problem__symptom-icon{
+  width:36px;height:36px;flex-shrink:0;
+  background:#FEF2F2;border-radius:8px;
+  display:flex;align-items:center;justify-content:center;
+  color:var(--danger);
+}
+@media(max-width:600px){
+  .aerys-problem__symptoms{grid-template-columns:1fr}
+}
+
+/* ═══════════════════════════════════════════════════════
+   SOLUTION — VISUAL STEP NUMBERS
+═══════════════════════════════════════════════════════ */
+.aerys-solution__step-num{
+  font-size:3rem;
+  font-weight:900;
+  line-height:1;
+  color:var(--accent);
+  opacity:.18;
+  margin-bottom:.625rem;
+  letter-spacing:-.04em;
+}
+.aerys-solution__step-title{
+  font-size:1.125rem;
+  font-weight:800;
+  margin-bottom:.625rem;
+  color:var(--text);
+  letter-spacing:-.01em;
+}
+.aerys-solution__step-desc{
+  font-size:.8125rem;
+  line-height:1.65;
+  color:var(--text-2);
+}
+
+/* ═══════════════════════════════════════════════════════
+   BUNDLES — POPULAR CARD IMPROVEMENTS
+═══════════════════════════════════════════════════════ */
+.aerys-bundle__popular-banner{
+  background:var(--gold);
+  text-align:center;
+  padding:.4rem;
+  font-size:.5625rem;
+  font-weight:800;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:#0A0A0A;
+}
+.aerys-bundle__ebook-badge{
+  display:inline-flex;align-items:center;
+  font-size:.6875rem;font-weight:700;
+  padding:.25rem .75rem;border-radius:999px;
+  background:rgba(67,97,238,.25);color:#8BA4FF;
+  margin-bottom:.625rem;
+}
+.aerys-bundle__per-night--savings strong{
+  color:var(--verified);
+}
+.aerys-bundle__savings-callout{
+  font-size:.75rem;font-weight:700;
+  color:var(--accent);
+  margin-bottom:.25rem;
+}
+
+/* hero tablet: show landscape image without lifestyle overlay */
+@media(max-width:960px){
+  .aerys-hero__media{height:auto;border-radius:0}
+  .aerys-hero__img-product{border-radius:20px}
+  .aerys-hero__img-lifestyle-wrap{width:44%;bottom:-1rem;right:-.75rem}
 }
