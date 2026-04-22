@@ -70,7 +70,7 @@
             <span class="aerys-bundle__price-shipping">FREE SHIPPING</span>
           </div>
           <p class="aerys-bundle__per-night aerys-bundle__per-night--savings">$0.67 / night &mdash; <strong>Save 33%</strong></p>
-          <button class="aerys-bundle__cta aerys-bundle__cta--popular btn-full" onclick="aerysAddToCart('protocol','The Protocol – 90 Nights',59.99)">Start Sleeping Better</button>
+          <button class="aerys-bundle__cta aerys-bundle__cta--popular btn-full" onclick="aerysAddToCart('popular','The Protocol – 90 Nights',59.99)">Start Sleeping Better</button>
           <p class="aerys-bundle__cta-meta">HSA / FSA Eligible &nbsp;&middot;&nbsp; Free US Shipping</p>
         </div>
       </article>
@@ -104,7 +104,7 @@
           </div>
           <div class="aerys-bundle__savings-callout">Save $49.95 vs. Starter price</div>
           <p class="aerys-bundle__per-night aerys-bundle__per-night--savings">$0.55 / night &mdash; <strong>Save 45%</strong></p>
-          <button class="aerys-bundle__cta aerys-bundle__cta--savings btn-full" onclick="aerysAddToCart('regimen','The Regimen – 180 Nights',99.99)">Start Sleeping Better</button>
+          <button class="aerys-bundle__cta aerys-bundle__cta--savings btn-full" onclick="aerysAddToCart('savings','The Regimen – 180 Nights',99.99)">Start Sleeping Better</button>
           <p class="aerys-bundle__cta-meta">HSA / FSA Eligible &nbsp;&middot;&nbsp; Free US Shipping</p>
         </div>
       </article>
@@ -134,10 +134,33 @@
   </div>
 </section>
 
+{%- assign _bundle_product = all_products[section.settings.bundle_product] -%}
+{%- if _bundle_product != blank -%}
+<script>
+(function(){
+  var _variants = {{ _bundle_product.variants | json }};
+  var _map = {};
+  _variants.forEach(function(v){
+    if (v.title.indexOf('30 Nights') !== -1) _map.starter = v.id;
+    if (v.title.indexOf('90 Nights') !== -1) _map.popular = v.id;
+    if (v.title.indexOf('180 Nights') !== -1) _map.savings = v.id;
+  });
+  window.AERYS_VARIANT_MAP = _map;
+})();
+</script>
+{%- endif -%}
+
 {% schema %}
 {
   "name": "Bundles",
-  "settings": [],
+  "settings": [
+    {
+      "type": "product",
+      "id": "bundle_product",
+      "label": "Bundle Product",
+      "info": "Select the AERYS product that contains the 30, 90, and 180 Night variants."
+    }
+  ],
   "presets": [{ "name": "Bundles" }]
 }
 {% endschema %}

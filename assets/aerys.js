@@ -124,14 +124,18 @@ function aerysCloseCart() {
 function aerysCheckout() {
   if (aerysCartCount() === 0) return;
 
-  var item = AERYS_CART[0];
-  var variantMap = { starter: '49876543210', popular: '49876543211', savings: '49876543212' };
-  var variantId = variantMap[item.id] || '';
-  var url = '/cart/' + variantId + ':' + item.qty;
+  var variantMap = window.AERYS_VARIANT_MAP || {};
+  var cartParts = AERYS_CART
+    .map(function(item) {
+      var variantId = variantMap[item.id];
+      return variantId ? (variantId + ':' + item.qty) : null;
+    })
+    .filter(Boolean);
 
-  // Shopify native checkout
-  window.location.href = url;
+  if (!cartParts.length) return;
+
   aerysGAEvent('begin_checkout', { value: aerysCartTotal() });
+  window.location.href = '/cart/' + cartParts.join(',');
 }
 
 /* ── FAQ Accordion ────────────────────────────────────────────── */
