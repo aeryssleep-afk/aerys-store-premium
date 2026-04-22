@@ -1,16 +1,57 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "layout": "theme",
   "sections": {
-    "aerys-hero":            { "type": "hero",            "settings": {} },
-    "aerys-problem":         { "type": "problem",         "settings": {} },
-    "aerys-agitation":       { "type": "agitation",       "settings": {} },
-    "aerys-solution":        { "type": "solution",        "settings": {} },
-    "aerys-proof":           { "type": "proof",           "settings": {} },
-    "aerys-social-proof":    { "type": "social-proof",    "settings": {} },
-    "aerys-differentiation": { "type": "differentiation", "settings": {} },
-    "aerys-bundles":         { "type": "bundles",         "settings": {} },
-    "aerys-faq":             { "type": "faq",             "settings": {} },
-    "aerys-final-cta":       { "type": "final-cta",       "settings": {} }
+    "aerys-hero": {
+      "type": "hero",
+      "settings": {}
+    },
+    "aerys-problem": {
+      "type": "problem",
+      "settings": {}
+    },
+    "aerys-agitation": {
+      "type": "agitation",
+      "settings": {}
+    },
+    "aerys-solution": {
+      "type": "solution",
+      "settings": {}
+    },
+    "aerys-proof": {
+      "type": "proof",
+      "settings": {}
+    },
+    "aerys-social-proof": {
+      "type": "social-proof",
+      "settings": {}
+    },
+    "aerys-differentiation": {
+      "type": "differentiation",
+      "settings": {}
+    },
+    "aerys-bundles": {
+      "type": "bundles",
+      "settings": {
+        "bundle_product": "aerys™-sleep-strips-breathe-better-sleep-deeper"
+      }
+    },
+    "aerys-faq": {
+      "type": "faq",
+      "settings": {}
+    },
+    "aerys-final-cta": {
+      "type": "final-cta",
+      "settings": {}
+    }
   },
   "order": [
     "aerys-hero",
