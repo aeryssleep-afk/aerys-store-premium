@@ -46,14 +46,19 @@ function aerysRenderCart() {
 
   if (countEl) countEl.textContent = count;
 
+  var banner = document.getElementById('aerysShippingBanner');
+
   if (count === 0) {
     if (empty) empty.style.display = '';
     if (footer) footer.style.display = 'none';
+    if (banner) banner.style.display = 'none';
+    aerysResetTimer();
     return;
   }
 
   if (empty) empty.style.display = 'none';
   if (footer) footer.style.display = '';
+  if (banner) banner.style.display = '';
 
   AERYS_CART.forEach(function(item, idx) {
     var row = document.createElement('div');
@@ -103,6 +108,42 @@ function aerysAddToCart(productId) {
   aerysRenderCart();
   aerysOpenCart();
   aerysGAEvent('add_to_cart', { item_id: productId, value: product.price });
+}
+
+/* ── Reservation Timer ────────────────────────────────────────── */
+var _aerysTimerTick = null;
+
+function aerysInitTimer() {
+  var KEY = 'aerysCartTimerEnd';
+  var DURATION = 600; // 10 minutes
+  var el = document.getElementById('aerysTimerDisplay');
+  if (!el) return;
+
+  clearInterval(_aerysTimerTick);
+
+  var end = parseInt(sessionStorage.getItem(KEY), 10);
+  if (!end || end < Date.now()) {
+    end = Date.now() + DURATION * 1000;
+    sessionStorage.setItem(KEY, end);
+  }
+
+  function tick() {
+    var rem = Math.max(0, Math.round((end - Date.now()) / 1000));
+    var m = Math.floor(rem / 60);
+    var s = rem % 60;
+    el.textContent = m + ':' + (s < 10 ? '0' : '') + s;
+    if (rem === 0) clearInterval(_aerysTimerTick);
+  }
+
+  tick();
+  _aerysTimerTick = setInterval(tick, 1000);
+}
+
+function aerysResetTimer() {
+  sessionStorage.removeItem('aerysCartTimerEnd');
+  clearInterval(_aerysTimerTick);
+  var el = document.getElementById('aerysTimerDisplay');
+  if (el) el.textContent = '10:00';
 }
 
 function aerysOpenCart() {
@@ -363,4 +404,5 @@ document.addEventListener('DOMContentLoaded', function() {
   aerysInitLazy();
   aerysInitAnimations();
   aerysInitCarousel();
+  aerysInitTimer();
 });
