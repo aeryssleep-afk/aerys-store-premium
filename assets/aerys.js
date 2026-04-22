@@ -383,18 +383,6 @@ document.addEventListener('DOMContentLoaded', function() {
   if (cartClose) cartClose.addEventListener('click', aerysCloseCart);
   if (overlay) overlay.addEventListener('click', aerysCloseCart);
 
-  // Checkout: sync localStorage cart → Shopify cart → navigate to /checkout
-  var checkoutForm = document.querySelector('#aerysCartFooter form');
-  if (checkoutForm) {
-    checkoutForm.addEventListener('submit', function(e) {
-      e.preventDefault();
-      aerysGAEvent('begin_checkout', { value: aerysCartTotal() });
-      aerysShopifySync(function() {
-        window.location.href = '/checkout';
-      });
-    });
-  }
-
   // Add-to-cart buttons — data-product="starter|popular|savings"
   document.querySelectorAll('[data-add-to-cart]').forEach(function(btn) {
     btn.addEventListener('click', function() {
