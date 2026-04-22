@@ -17,6 +17,24 @@ var AERYS_VIDEOS = [
   'https://www.youtube.com/embed/dQw4w9WgXcQ'
 ];
 
+/* ── Variant Map: auto-fetch if Liquid didn't inject it ─────────── */
+var _aerysVariantMapReady = window.AERYS_VARIANT_MAP
+  ? Promise.resolve()
+  : fetch('/products.json?limit=250')
+      .then(function(r) { return r.json(); })
+      .then(function(data) {
+        var target = (data.products || []).find(function(p) { return p.id === 9707407343833; });
+        if (!target) return;
+        var map = {};
+        (target.variants || []).forEach(function(v) {
+          if (v.title.indexOf('30 Nights') !== -1) map.starter = v.id;
+          if (v.title.indexOf('90 Nights') !== -1) map.popular  = v.id;
+          if (v.title.indexOf('180 Nights') !== -1) map.savings = v.id;
+        });
+        window.AERYS_VARIANT_MAP = map;
+      })
+      .catch(function() {});
+
 function aerysCartSave() {
   localStorage.setItem('aerysCart', JSON.stringify(AERYS_CART));
 }
@@ -160,6 +178,30 @@ function aerysCloseCart() {
   if (cart) { cart.classList.remove('open'); cart.setAttribute('aria-hidden','true'); }
   if (overlay) { overlay.classList.remove('open'); overlay.setAttribute('aria-hidden','true'); }
   document.body.style.overflow = '';
+}
+
+/* ── Shopify Cart Sync ─────────────────────────────────────────── */
+function aerysShopifySync(callback) {
+  _aerysVariantMapReady.then(function() {
+    var variantMap = window.AERYS_VARIANT_MAP || {};
+    var items = AERYS_CART.map(function(item) {
+      var vid = variantMap[item.id];
+      return vid ? { id: vid, quantity: item.qty } : null;
+    }).filter(Boolean);
+
+    if (!items.length) { if (callback) callback(); return; }
+
+    fetch('/cart/clear.js', { method: 'POST' })
+      .then(function() {
+        return fetch('/cart/add.js', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ items: items })
+        });
+      })
+      .then(function() { if (callback) callback(); })
+      .catch(function() { if (callback) callback(); });
+  });
 }
 
 function aerysCheckout() {
@@ -336,12 +378,22 @@ document.addEventListener('DOMContentLoaded', function() {
   var cartBtn = document.getElementById('aerysCartBtn');
   var cartClose = document.getElementById('aerysCartClose');
   var overlay = document.getElementById('aerysOverlay');
-  var checkoutBtn = document.getElementById('aerysCheckoutBtn');
 
   if (cartBtn) cartBtn.addEventListener('click', aerysOpenCart);
   if (cartClose) cartClose.addEventListener('click', aerysCloseCart);
   if (overlay) overlay.addEventListener('click', aerysCloseCart);
-  if (checkoutBtn) checkoutBtn.addEventListener('click', aerysCheckout);
+
+  // Checkout: sync localStorage cart → Shopify cart → navigate to /checkout
+  var checkoutForm = document.querySelector('#aerysCartFooter form');
+  if (checkoutForm) {
+    checkoutForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      aerysGAEvent('begin_checkout', { value: aerysCartTotal() });
+      aerysShopifySync(function() {
+        window.location.href = '/checkout';
+      });
+    });
+  }
 
   // Add-to-cart buttons — data-product="starter|popular|savings"
   document.querySelectorAll('[data-add-to-cart]').forEach(function(btn) {
