@@ -1121,6 +1121,7 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
 /* ── TYPOGRAPHY — SF Pro Display stack ─────────────────── */
 body{
   font-family:'SF Pro Display','Inter',system-ui,-apple-system,sans-serif;
+  padding-top:var(--bar-h);
 }
 
 /* ── GRADIENT TEXT — matches localhost gradient-text utility */
@@ -1258,3 +1259,19 @@ body{
 /* ── REVIEW AUTHOR — tracking tightened ─────────────────── */
 .aerys-review-card__name,
 .aerys-vcard__author{letter-spacing:-.01em}
+
+/* ── HEADER OVERLAP FIX — scroll with page, never covers hero ── */
+.aerys-header{
+  position:relative;
+  top:auto;
+  left:auto;
+  right:auto;
+}
+/* Remove fixed-header height compensation from hero padding */
+.aerys-hero{padding-top:5rem}
+@media(max-width:960px){
+  .aerys-hero{padding:3rem 0 4rem}
+}
+@media(max-width:600px){
+  .aerys-hero{padding:2rem 0 3.5rem}
+}
