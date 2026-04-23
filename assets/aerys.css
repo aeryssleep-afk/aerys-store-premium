@@ -1275,3 +1275,104 @@ body{
 @media(max-width:600px){
   .aerys-hero{padding:2rem 0 3.5rem}
 }
+
+/* ═══════════════════════════════════════════════════════
+   BUNDLE CARDS — Visual alignment with localhost #products
+═══════════════════════════════════════════════════════ */
+
+/* Brand color: pure black → night-900 dark navy */
+:root{
+  --brand:#0a0c1a;
+  --brand-hover:#141830;
+  --brand-glow:rgba(10,12,26,.2);
+}
+
+/* Section background: near-white dark tint (night-950/3%) */
+.aerys-bundles{background:rgba(6,8,15,.03)}
+
+/* ── POPULAR CARD — white bg + night-900 ring ──────────── */
+.aerys-bundle--popular{
+  background:#fff;
+  border:2px solid #0a0c1a;
+  box-shadow:0 28px 72px rgba(10,12,26,.16),0 8px 28px rgba(0,0,0,.1);
+}
+
+/* ── SAVINGS CARD — aerys gradient accent strip at top ──── */
+.aerys-bundle--savings{border-color:#c0d5ff}
+.aerys-bundle--savings::before{
+  content:'';
+  display:block;
+  height:3px;
+  background:linear-gradient(to right,#5f91ff,#1e4aff);
+  flex-shrink:0;
+}
+
+/* ── IMAGE ZONE TINT (top section of each card) ─────────── */
+.aerys-bundle__img-wrap{background:#eef0f6}
+.aerys-bundle--savings .aerys-bundle__img-wrap{background:#f0f4ff}
+.aerys-bundle__img{background:transparent}
+.aerys-bundle--popular .aerys-bundle__img{background:transparent}
+
+/* Dot nav on popular (now on light bg) */
+.aerys-bundle--popular .aerys-bundle__img-dot{background:rgba(10,12,26,.12)}
+.aerys-bundle--popular .aerys-bundle__img-dot.active{background:#0a0c1a}
+.aerys-bundle--popular .aerys-bundle__caption{color:#56608e}
+
+/* ── BADGE CHIPS — outline per card (not filled blue) ────── */
+.aerys-bundle__badge{background:#fff;border:1.5px solid}
+.aerys-bundle__badge--starter{background:#fff;color:#1e2448;border-color:#d5d9e8}
+.aerys-bundle__badge--popular{background:#fff;color:#0a0c1a;border-color:#0a0c1a}
+.aerys-bundle__badge--savings{background:#fff;color:#1e4aff;border-color:#c0d5ff}
+
+/* ── POPULAR BANNER — night-900 dark (not accent blue) ───── */
+.aerys-bundle__popular-banner{background:#0a0c1a}
+
+/* ── E-BOOK BADGE — white glass chip ────────────────────── */
+.aerys-bundle__ebook-badge{
+  background:rgba(255,255,255,.92);
+  color:#1e2448;
+  border:1px solid #d5d9e8;
+  box-shadow:0 1px 4px rgba(0,0,0,.08);
+}
+
+/* ── CTA BUTTONS — per-card color system ─────────────────── */
+.aerys-bundle__cta--starter{background:#eef0f6;color:#1e2448}
+.aerys-bundle__cta--starter:hover{
+  background:#d5d9e8;color:#0a0c1a;
+  transform:none;box-shadow:none;
+}
+.aerys-bundle__cta--popular{background:#0a0c1a;color:#fff}
+.aerys-bundle__cta--popular:hover{
+  background:#141830;
+  transform:translateY(-2px);
+  box-shadow:0 6px 20px rgba(10,12,26,.3);
+}
+.aerys-bundle__cta--savings{background:#1e4aff;color:#fff}
+.aerys-bundle__cta--savings:hover{
+  background:#3a6bff;
+  transform:translateY(-2px);
+  box-shadow:0 6px 24px rgba(30,74,255,.35);
+}
+
+/* ── POPULAR CARD TEXT — dark on white ───────────────────── */
+.aerys-bundle--popular .aerys-bundle__name{color:#0a0c1a}
+.aerys-bundle--popular .aerys-bundle__subtitle{color:#56608e}
+.aerys-bundle--popular .aerys-bundle__features li{color:#3a4270}
+.aerys-bundle--popular .aerys-bundle__price{color:#0a0c1a}
+.aerys-bundle--popular .aerys-bundle__price-count{color:#7e88b3}
+.aerys-bundle--popular .aerys-bundle__per-night--savings{color:#1e2448}
+.aerys-bundle--popular .aerys-bundle__offer-hook{color:#56608e}
+.aerys-bundle--popular .aerys-bundle__guarantee{color:#10B981}
+.aerys-bundle--popular .aerys-bundle__cta-meta{color:#7e88b3}
+
+/* ── SAVINGS CARD — per-night in aerys blue ─────────────── */
+.aerys-bundle--savings .aerys-bundle__per-night--savings{color:#1e4aff}
+.aerys-bundle__savings-callout{color:#1e4aff}
+
+/* ── PER-NIGHT STARTER — strip large highlighted pill ────── */
+.aerys-bundle__per-night--starter{
+  font-size:.8125rem;font-weight:600;color:#56608e;
+  background:none;border-radius:0;padding:0;
+  display:block;letter-spacing:normal;
+  margin-bottom:1.75rem;
+}
